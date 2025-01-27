@@ -10,8 +10,12 @@ app = Flask(__name__, static_folder='', static_url_path='')
 CORS(app)
 
 @app.route('/')
-def serve_react():
-    return send_from_directory(app.static_folder, 'index.html')
+@app.route('/<path:path>')
+def serve_react(path='index.html'):
+    try:
+        return send_from_directory(app.static_folder, path)
+    except Exception:
+        return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/generate', methods=['POST'])
 def generate():
