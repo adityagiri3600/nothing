@@ -11,11 +11,11 @@ CORS(app)
 
 @app.route('/')
 @app.route('/<path:path>')
-def serve_react(path='index.html'):
+def serve_react(path='page.html'):
     try:
         return send_from_directory(app.static_folder, path)
     except Exception:
-        return send_from_directory(app.static_folder, 'index.html')
+        return send_from_directory(app.static_folder, 'page.html')
 
 @app.route('/generate', methods=['POST'])
 def generate():
