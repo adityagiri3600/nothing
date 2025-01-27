@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route('/')
 def serve_react():
-    return send_from_directory(app.static_folder, 'page.html')
+    return "Hello World!"
 
 @app.route('/generate', methods=['POST'])
 def generate():
